@@ -6,10 +6,7 @@ import {
 const initialState = {
 
     smurfList: [{
-      name: "Initial Smurf",
-      age: 6,
-      height: "25 cm",
-      id: 9999
+
     }]
     
   };
@@ -22,11 +19,7 @@ const initialState = {
         console.log("first smurf ",action.payload[0])
         return {
           ...state,
-          name: action.payload[0].name,
-          age: action.payload[0].age,
-          height: action.payload[0].height, 
-          id: action.payload[0].id
-          
+          smurfList: action.payload
           
         };
       case ADDING_SMURFS_SUCCESS:

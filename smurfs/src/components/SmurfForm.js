@@ -25,36 +25,55 @@ const SmurfForm = props => {
         setId(e.target.value);
     }
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        props.addSmurfs(name,age,height,id)
+        setName('');
+        setAge('');
+        setHeight('');
+        setId('');
+    }
+
 
     return(
         <div>
-            <form >
+            <form onSubmit={handleSubmit} id="smurf-form">
+        
                 <input 
                     type="text"
                     name="Name"
                     value={name}
                     onChange={handleNameChanges}
+                    className="feedback-input"
+                    placeholder="Name"
                 />
                 <input 
                     type="text"
                     name="Age"
                     value={age}
                     onChange={handleAgeChanges}
+                    className="feedback-input"
+                    placeholder="Age"
                 />
                 <input 
                     type="text"
                     name="Height"
                     value={height}
                     onChange={handleHeightChanges}
+                    className="feedback-input"
+                    placeholder="Height"
                 />
                 <input 
                     type="text"
                     name="ID"
                     value={id}
                     onChange={handleIdChanges}
+                    className="feedback-input"
+                    placeholder="ID"
                 />
-                <button onClick={props.addSmurfs(name,age,height,id)} className="add-btn">Add Smurf</button>
+                <button className="add-btn">Add Smurf</button>
             </form>
+            
         </div>
     )
 

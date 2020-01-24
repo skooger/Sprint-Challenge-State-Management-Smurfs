@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchSmurfs} from '../actions';
+import Smurf from './Smurf';
 
 
 const SmurfList = props => {
@@ -8,11 +9,14 @@ const SmurfList = props => {
 
     return(
         <div>
-            <button onClick={props.fetchSmurfs}>Get Smurfs</button>
-            <div>
-                <h2>{props.name}</h2>
-                <h3>{props.age}</h3>
-                <p>{props.height}</p>
+            <button className="get-btn" onClick={props.fetchSmurfs}>Get Smurfs</button>
+            <div className="smurf-container">
+            {
+                props.smurfList.map(smurf => (
+                    <Smurf name={smurf.name} age={smurf.age} height={smurf.height}></Smurf>
+                ))
+            }
+                
             </div>
         </div>
     )
@@ -22,9 +26,7 @@ const SmurfList = props => {
 
 const mapStateToProps = state => {
     return{
-        name: state.name,
-        age: state.age,
-        height: state.height
+        smurfList: state.smurfList
     };
 };
 
